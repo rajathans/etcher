@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title">Select a Drive</h4>
-  <button class="close" ng-click="modal.closeModal()">&times;</button>
+  <button tabindex="14" class="close" ng-click="modal.closeModal()">&times;</button>
 </div>
 
 <div class="modal-body">
@@ -9,7 +9,10 @@
       ng-disabled="!modal.constraints.isDriveValid(drive, modal.state.getImage())"
       ng-dblclick="modal.selectDriveAndClose(drive)"
       ng-click="modal.toggleDrive(drive)">
-        <div>
+        <div
+          tabindex="{{ 15 + $index }}"
+          ng-keypress="modal.keywordToggleDrive(drive, $event)">
+
           <h4 class="list-group-item-heading">{{ drive.description }} -
             <span class="word-keep">{{ drive.size | closestUnit }}</span>
           </h4>
